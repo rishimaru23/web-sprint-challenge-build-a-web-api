@@ -15,8 +15,18 @@ try{
     }
 }
 
-function validate
+function validateProject (req, res, next) {
+    const { name , description} = req.body
+    if(!name || !description) {
+        res.status(400).json({
+            message:"Please enter a valid name or description"
+        })
+    } else {
+        next()
+    }
+}
 
 module.exports = {
     validateProjectId,
+    validateProject,
 }
